@@ -34,7 +34,7 @@ export class UsersComponent implements OnInit {
       .subscribe(params => {
         this.UserId = +params['UserId'];
 
-        console.log('Query param user: ', this.UserId);
+        //console.log('Query param user: ', this.UserId);
       });
 
      this.todoservice.getTodosDetail(this.UserId)

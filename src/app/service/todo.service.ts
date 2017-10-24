@@ -32,18 +32,26 @@ export class TodoService {
 
   todos: Todo[] = [];
 
-  addTodo(todo: Todo): TodoService {
+  addTodo(todo: Todo) {
     if (!todo.id) {
       todo.id = ++this.lastId;
     }
-    this.todos.push(todo);
-    return this;
+
+    return this.http.post('https://jsonplaceholder.typicode.com/todos', this.todos.push(todo))
+               .map(response => {
+                 console.log(response)
+                 return response.json()
+               })
   }
 
-  deleteTodoById(id: number): TodoService {
+  deleteTodoById(id: number){
     this.todos = this.todos
       .filter(todo => todo.id !== id);
-    return this;
+    return this.http.delete('https://jsonplaceholder.typicode.com/todos', this.todos)
+               .map(response => {
+                 console.log(response)
+                 return response.json()
+               })
   }
 
   updateTodoById(id: number, values: Object = {}): Todo {

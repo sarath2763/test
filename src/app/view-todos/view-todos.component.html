@@ -1,7 +1,7 @@
 
 <section class="todoapp">
   <header class="header">
-    <input class="new-todo" placeholder="add todos.." autofocus="" [(ngModel)]="newTodo.title" 
+    <input class="new-todo" placeholder="add todo and press enter key.." autofocus="" [(ngModel)]="newTodo.title" 
     (keyup.enter)="addTodo()">
   </header>
   <section class="main" *ngIf="todos.length > 0">

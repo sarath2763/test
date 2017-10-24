@@ -20,8 +20,11 @@ export class ViewTodosComponent implements OnInit {
   }
   
   addTodo() {
-    this.todoservice.addTodo(this.newTodo);
-    this.newTodo = new Todo();
+    this.todoservice.addTodo(this.newTodo)
+                       .subscribe(
+                          () => {
+                             this.newTodo = new Todo();
+                        });
   }
 
   toggleTodoComplete(todo) {
@@ -29,7 +32,8 @@ export class ViewTodosComponent implements OnInit {
   }
 
   removeTodo(todo) {
-    this.todoservice.deleteTodoById(todo.id);
+    this.todoservice.deleteTodoById(todo.id).subscribe(
+                          () => {});
   }
 
   get todos() {
